@@ -12,9 +12,81 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,450;0,600;0,700;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
   </head>
-  <body class="bg-zinc-950 text-zinc-100 antialiased overflow-hidden select-none">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+  <body>
+    <!-- 3D Canvas Viewport -->
+    <div id="canvas-container"></div>
+
+    <!-- Top Navigation & Rig Info HUD -->
+    <header class="hud-header">
+      <div class="hud-panel">
+        <div class="brand-title">RIDGE RUNNERS</div>
+        <div class="rig-subtitle">Active Rig: <span id="rig-name" style="color: #fbbf24; font-weight: bold;">Scout 4x4 Expedition</span></div>
+        <div id="cp-status" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #10b981; margin-top: 2px;">Checkpoint: 1 / 9</div>
+      </div>
+
+      <div style="display: flex; gap: 8px;">
+        <button id="btn-switch-rig" class="btn-action btn-primary">Switch Rig</button>
+        <button id="btn-cam" class="btn-action">Camera [C]</button>
+        <button id="btn-mute" class="btn-action">Sound [M]</button>
+      </div>
+    </header>
+
+    <!-- Speedometer & Engine RPM Gauge -->
+    <div class="telemetry-card">
+      <div class="speed-display">
+        <div>
+          <div style="font-size: 10px; font-family: 'JetBrains Mono', monospace; color: #71717a; text-transform: uppercase;">TRAIL SPEED</div>
+          <div style="display: flex; align-items: baseline;">
+            <span id="speed-val" class="speed-value">0</span>
+            <span class="speed-unit">KM/H</span>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-size: 10px; font-family: 'JetBrains Mono', monospace; color: #71717a; text-transform: uppercase;">GEAR</div>
+          <span id="gear-val" class="gear-display">1</span>
+        </div>
+      </div>
+
+      <div>
+        <div style="display: flex; justify-content: space-between; font-size: 10px; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">
+          <span>ENGINE RPM</span>
+          <span>MAX 6500</span>
+        </div>
+        <div class="rpm-bar-container">
+          <div id="rpm-bar" class="rpm-bar"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Keyboard Controls Card -->
+    <div class="controls-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; border-bottom: 1px solid #27272a; padding-bottom: 4px;">
+        <span style="color: #fbbf24; font-weight: 700;">CONTROLS</span>
+        <button id="btn-reset" style="background: none; border: none; color: #f59e0b; cursor: pointer; font-size: 11px; font-family: inherit;">Reset [R]</button>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; font-size: 10px;">
+        <div><span class="kbd-key">W</span> / <span class="kbd-key">▲</span> Drive</div>
+        <div><span class="kbd-key">S</span> / <span class="kbd-key">▼</span> Reverse</div>
+        <div><span class="kbd-key">A</span> / <span class="kbd-key">◄</span> Left</div>
+        <div><span class="kbd-key">D</span> / <span class="kbd-key">►</span> Right</div>
+        <div><span class="kbd-key">SPACE</span> Brake</div>
+        <div><span class="kbd-key">C</span> Camera</div>
+      </div>
+    </div>
+
+    <!-- Vehicle Selector Drawer -->
+    <div id="vehicle-drawer" class="vehicle-drawer">
+      <div class="drawer-header">
+        <span>SELECT OFF-ROAD RIG</span>
+        <span style="font-size: 10px; color: #71717a;">7 Presets</span>
+      </div>
+      <button class="vehicle-option active" data-vehicle="Scout 4x4 Expedition">Scout 4x4 Expedition</button>
+      <button class="vehicle-option" data-vehicle="Baja Dune Runner">Baja Dune Runner</button>
+      <button class="vehicle-option" data-vehicle="Heavy Duty Overland Truck">Heavy Duty Overland Truck</button>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
