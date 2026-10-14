@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'upload' | 'studio' | 'drive'>('upload');
+  const [activeTab, setActiveTab] = useState<'drive' | 'studio' | 'upload'>('drive');
   const [currentBlueprint, setCurrentBlueprint] = useState<VehicleBlueprint>(PRESET_VEHICLES[0].blueprint);
   const [isGenerating, setIsGenerating] = useState<boolean>(false);
   const [isPipelineModalOpen, setIsPipelineModalOpen] = useState<boolean>(false);
@@ -55,16 +55,16 @@ export default function App() {
         {/* Workflow Mode Tabs */}
         <nav className="flex items-center gap-1 bg-zinc-900/90 border border-zinc-800 p-1 rounded-xl">
           <button
-            onClick={() => setActiveTab('upload')}
+            onClick={() => setActiveTab('drive')}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors ${
-              activeTab === 'upload'
+              activeTab === 'drive'
                 ? 'bg-amber-500 text-zinc-950 font-bold shadow'
                 : 'text-zinc-400 hover:text-zinc-200'
             }`}
           >
-            <UploadCloud className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">1. Upload & Analyze</span>
-            <span className="sm:hidden">Upload</span>
+            <Gamepad2 className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">1. Drive Sim</span>
+            <span className="sm:hidden">Drive</span>
           </button>
 
           <button
@@ -76,34 +76,34 @@ export default function App() {
             }`}
           >
             <Box className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">2. 3D Inspection Studio</span>
-            <span className="sm:hidden">Inspect</span>
+            <span className="hidden sm:inline">2. 3D Rig Studio</span>
+            <span className="sm:hidden">Studio</span>
           </button>
 
           <button
-            onClick={() => setActiveTab('drive')}
+            onClick={() => setActiveTab('upload')}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors ${
-              activeTab === 'drive'
+              activeTab === 'upload'
                 ? 'bg-amber-500 text-zinc-950 font-bold shadow'
                 : 'text-zinc-400 hover:text-zinc-200'
             }`}
           >
-            <Gamepad2 className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">3. Drive Game</span>
-            <span className="sm:hidden">Drive</span>
+            <UploadCloud className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">3. AI Vehicle Builder</span>
+            <span className="sm:hidden">AI Gen</span>
           </button>
         </nav>
 
-        {/* GitHub outbouund & Pipeline Links */}
+        {/* GitHub Bridge & Pipeline Links */}
         <div className="flex items-center gap-2">
           <button
             onClick={() => setIsGitHubModalOpen(true)}
             className="flex items-center gap-1.5 text-xs font-mono bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-200 hover:text-white px-3 py-1.5 rounded-lg transition-colors shadow"
-            title="Connect your outbouund GitHub repository for asset sync, commits, and CI/CD pipelines"
+            title="Connect your ridge-runner GitHub repository for asset sync, commits, and CI/CD pipelines"
           >
             <Github className="w-3.5 h-3.5 text-amber-400" />
-            <span className="font-semibold">outbouund</span>
-            <span className="text-[10px] bg-amber-500/10 text-amber-300 px-1 rounded hidden lg:inline">Connect</span>
+            <span className="font-semibold">ridge-runner</span>
+            <span className="text-[10px] bg-amber-500/10 text-amber-300 px-1 rounded hidden lg:inline">Sync</span>
           </button>
 
           <button

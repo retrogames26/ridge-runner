@@ -48,7 +48,7 @@ export const GitHubRepoModal: React.FC<GitHubRepoModalProps> = ({
   onLoadBlueprint,
 }) => {
   const [repoInput, setRepoInput] = useState<string>(() => {
-    return localStorage.getItem('rr_github_repo') || 'outbouund';
+    return localStorage.getItem('rr_github_repo') || 'retrogames26/ridge-runner';
   });
   const [githubToken, setGithubToken] = useState<string>(() => {
     return localStorage.getItem('rr_github_token') || '';
