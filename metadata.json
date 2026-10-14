@@ -1,0 +1,8 @@
+{
+  "name": "Remix Ridge Runners — Image-to-3D Vehicle Builder",
+  "description": "Multi-view image-to-3D low-poly vehicle generator and off-road driving simulator for Ridge Runners.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
